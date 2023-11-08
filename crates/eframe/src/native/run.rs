@@ -1491,7 +1491,7 @@ mod wgpu_integration {
                                 // Resize with 0 width and height is used by winit to signal a minimize event on Windows.
                                 // See: https://github.com/rust-windowing/winit/issues/208
                                 // This solves an issue where the app would panic when minimizing on Windows.
-                                if 0 < physical_size.width && 0 < physical_size.height {
+                                if 0 < physical_size.width && 0 < physical_size.height && physical_size.width < (1<<31) && physical_size.height < (1<<31) {
                                     running.painter.on_window_resized(
                                         physical_size.width,
                                         physical_size.height,
